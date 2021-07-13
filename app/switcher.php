@@ -1,15 +1,19 @@
 <?php
 
-$action = $_GET['action'];
+if(isset($_GET['action'])) {
+	$action = $_GET['action'];
+}	
 
-switch ($action) {
-
-	default:
+if(isset($action)) {
+	switch ($action) {
 	
-	break;
-
-	case "new":
-		echo "New contact";
-	break;
-
+		default:
+		
+		break;
+	
+		case "new":
+			echo "New contact";
+		break;
+	
+	}	
 }
