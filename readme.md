@@ -4,11 +4,8 @@ Tento kód je vytvořen jako ukázka software - Adresáře kontaktů.
 
 ## Uživatelské funkce Adresáře
 - zobrazení seznamu kontaktů
-- zobrazení detailu kontaktů
+- zobrazení detailu kontaktů v přehledu s možností prokliku na psaní e-mailu / vytáčení telefonu
 - úprava kontaktu
-- vyhledávání v kontaktech
-- vložení nového kontaktu (včetně napojení na registr firem Ares v případě firemních kontaktů)
-- funkce štítků
 
 ## Technické funkce Adresáře
 - možnost volitelného užívání Elastic Search
@@ -39,11 +36,13 @@ https://getbootstrap.com/docs/5.0/examples/sidebars/
 ###### PHP
 - API na spravu udaju
 - duplicitni kontakty - zabranit tomu
+- vyhledávání v kontaktech (Elastic Search)
+- vložení nového kontaktu (včetně napojení na registr firem Ares v případě firemních kontaktů)
+- funkce štítků
 
 
 ###### Ostatni
-- moznost Elastic Search
-- dokumentace
+- dokumentace (pokyny k instalaci)
 
 
 ## Licence

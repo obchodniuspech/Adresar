@@ -23,14 +23,16 @@ $twig = new \Twig\Environment($loader, [
 
 //echo $_GET['id'];
 
-	echo $twig->render('index.html', [
+	echo $twig->render($page2Render.'.html', [
 		'BASE_URL' => BASE_URL, 
 		'pageTitle' => $pageTitle, 
 		'pageTitleSub' => $pageTitleSub, 
 		'pageContent' => $pageContent, 
 		'pageContentTable' => $pageContentTable,
-		"pageContentButton"=> $pageContentButton
+		"pageContentButton"=> $pageContentButton,
+		'menuActive' => $page2Render,
 	]);
+
 
 /*
 $loader1 = new \Twig\Loader\ArrayLoader([

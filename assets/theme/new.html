@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block title %}{{ pageTitleSub }}{% endblock %}
+{% block head %}
+	{{ parent() }}
+	<style type="text/css">
+		.important { color: #336699; }
+	</style>
+{% endblock %}
+{% block content %}
+
+{% include 'menu.html' %}
+
+	
+	<div class="row" id="contentBlock">
+		<div class="col-md-12">
+			<h1>
+				  {{ pageTitle }}
+				  <small class="text-muted">{{ pageTitleSub }}</small>
+			</h1>
+			{{ pageContent|raw }}
+			
+		</div>
+	</div>
+
+	</main>
+{% endblock %}

@@ -61,12 +61,11 @@ class Form {
 					break;
 					
 					case "hidden":
-						$placeholder = $fields[$key]['placeholder'];
 						$invalue = $fields[$key]['value'];
 						$name = $fields[$key]['name'];
 						$class = $fields[$key]['class'];
 						$id = $fields[$key]['id'];
-						$this_input = array("type"=>$type,"name"=>$placeholder,"html"=>"<input name='$name' id='$id' type='$type' value='$invalue'>\n");
+						$this_input = array("type"=>$type,"name"=>$name,"html"=>"<input name='$name' id='$id' type='$type' value='$invalue'>\n");
 					break;
 					
 					case "number":
@@ -154,11 +153,16 @@ class Form {
 		
 		$write = "";
 		foreach ($inputs AS $k=>$v) {
-			if ($inputs[$k]['type']!="button" AND $inputs[$k]['type']!="submit") {
+			if ($inputs[$k]['type']!="button" AND $inputs[$k]['type']!="submit" AND $inputs[$k]['type']!="hidden") {
 				$write.= "<tr><td>".$inputs[$k]['name']."</td><td>".$inputs[$k]['html']."</td></tr>";
 			}
 			else {
-				$write.= "<tr><td>&nbsp;</td><td>".$inputs[$k]['html']."</td></tr>";
+				if ($inputs[$k]['type']=="hidden") {
+					$write.= "".$inputs[$k]['html']."";
+				}
+				else {
+					$write.= "<tr><td>&nbsp;</td><td>".$inputs[$k]['html']."</td></tr>";
+				}
 			}
 		}
 		

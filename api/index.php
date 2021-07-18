@@ -12,8 +12,6 @@ include("../app/include.php");
 
 $contacts = new Contacts($mysqli);
 
-$_POST = array_map ( 'htmlspecialchars' , $_POST );
-$_GET = array_map ( 'htmlspecialchars' , $_GET );
 
 $action = $_POST['action'];
 
@@ -24,6 +22,9 @@ switch ($action) {
 	break;
 	case "saveNew":
 		$contacts->saveNew($_POST);
+	break;
+	case "saveEdit":
+		$contacts->saveEdit($_POST);
 	break;
 	case "delete":
 		$contacts->delete($_POST['id']);

@@ -1,4 +1,6 @@
 <?php
+$_POST = array_map ( 'htmlspecialchars' , $_POST );
+$_GET = array_map ( 'htmlspecialchars' , $_GET );
 
 // Default configs
 define("BASE_URL", "http://localhost:8888/adresar_blueghost/Adresar_BlueGhost/");
