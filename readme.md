@@ -1,6 +1,6 @@
 # Adresář - Ukázkový projekt
 
-Tento kód je vytvořen jako ukázka software - Adresáře kontaktů.
+Aplikace adresář umožňuje základní správu kontaktů a je i základem pro kompletní administraci.
 
 ## Uživatelské funkce Adresáře
 - zobrazení seznamu kontaktů
