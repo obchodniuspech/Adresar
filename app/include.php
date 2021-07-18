@@ -1,5 +1,7 @@
 <?php
-include("./app/config.php");
-include HOMEDIR.'app/loginCheck.php';
-include HOMEDIR.'app/autoload.php';
-include(HOMEDIR."app/switcher.php");
+include(__DIR__."/config.php");
+include __DIR__.'/loginCheck.php';
+include __DIR__.'/autoload.php';
+include(__DIR__."/contacts.php");
+include(__DIR__."/forms.php");
+include(__DIR__."/switcher.php");

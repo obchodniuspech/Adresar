@@ -3,9 +3,11 @@
 	<head>
 		{% block head %}
 			<!-- Bootstrap core CSS -->
-			<link href="https://getbootstrap.com/docs/5.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-			<link rel="stylesheet" href="https://getbootstrap.com/docs/5.0/examples/sidebars/sidebars.css"/>
-			<link rel="stylesheet" href="./assets/css/style.css">
+			<link href="{{ BASE_URL }}/assets/css/bootstrap.min.css" rel="stylesheet">
+			<link rel="stylesheet" href="{{ BASE_URL }}assets/css/sidebars.css"/>
+			<link rel="stylesheet" href="{{ BASE_URL }}assets/css/style.css?v=0.5">
+			<script src="{{ BASE_URL }}assets/js/jquery-3.6.0.min.js"></script>
+			<script src="{{ BASE_URL }}assets/js/main.js?v=0.5"></script>
 			<title>{% block title %}{% endblock %} - Adresář kontaktů</title>
 		{% endblock %}
 	</head>

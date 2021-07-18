@@ -1,3 +1,14 @@
 #contentBlock {
 	padding: 50px 50px 50px 50px;
 }
+
+.has-error {
+	border: 1px solid red;
+}
+.rowReady2Delete {
+	color: white !important;
+}
+
+.rowReady2Delete>td>a {
+	color: white !important;
+}

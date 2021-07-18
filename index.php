@@ -3,18 +3,34 @@
 error_reporting(E_ALL);
 ini_set("display_errors", 1);
 
+
+$pageContent = "";
+$pageTitle = "";
+$pageTitleSub = "";
+$pageContentTable = "";
+$pageContentButton = "";
+
 include "./app/include.php";
 
 //echo "Vse zatim funguje";
 
 
-$loader = new \Twig\Loader\FilesystemLoader(HOMEDIR.'/assets/theme/');
+$loader = new \Twig\Loader\FilesystemLoader('./assets/theme/');
 $twig = new \Twig\Environment($loader, [
 	//'cache' => HOMEDIR.'/assets/theme/cache',
 	'debug' => true,
 ]);
 
-echo $twig->render('index.html', ['the' => 'variables', 'go' => 'here']);
+//echo $_GET['id'];
+
+	echo $twig->render('index.html', [
+		'BASE_URL' => BASE_URL, 
+		'pageTitle' => $pageTitle, 
+		'pageTitleSub' => $pageTitleSub, 
+		'pageContent' => $pageContent, 
+		'pageContentTable' => $pageContentTable,
+		"pageContentButton"=> $pageContentButton
+	]);
 
 /*
 $loader1 = new \Twig\Loader\ArrayLoader([

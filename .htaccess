@@ -1,0 +1,4 @@
+RewriteEngine On
+
+RewriteCond %{REQUEST_URI} !^(/assets(.*)|/api(.*))$
+RewriteRule ^(.*)?$ index.php?id=$1 [L,QSA]
