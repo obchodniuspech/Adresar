@@ -2,21 +2,6 @@
 
 Aplikace adresář umožňuje základní správu kontaktů a je i základem pro kompletní administraci.
 
-## Struktura aplikace Adresář
-bootstrap/\
-├── dist/\
-│   ├── css/\
-│   └── js/\
-├── site/\
-│   └──content/\
-│      └── docs/\
-│          └── 5.0/\
-│              └── examples/\
-├── js/\
-└── scss/\
-
-The scss/ and js/ are the source code for our CSS and JavaScript. The dist/ folder includes everything listed in the precompiled download section above. The site/docs/ folder includes the source code for our documentation, and examples/ of Bootstrap usage. Beyond that, any other included file provides support for packages, license information, and development.
-
 ## Uživatelské funkce Adresáře
 - zobrazení seznamu kontaktů
 - zobrazení detailu kontaktů v přehledu s možností prokliku na psaní e-mailu / vytáčení telefonu
@@ -45,7 +30,18 @@ Vytvořte příslušnou databázi a importujte soubor /app/install.sql pro vytvo
 ```
 
 ```
-Vytvořte soubor config.php pomocí vzorového souboru config_example.php, případně spusťte instalaci načtením aplikace v prohlížeči (beta).
+Nastavte souboru /app/config.php oprávnění chmod 777
+```
+```
+Nastavte složce /assets/cache/ oprávnění chmod 777
+```
+
+```
+Spusťte instalátor na webové adrese aplikace. Vyplňte údaje k databázi, mělo by dojít k automatickému vytvoření souboru config.php, pokud nastane chyba, postupujte prosím manuální instalací - viz níže.
+```
+
+```
+Vytvořte soubor /app/config.php pomocí vzorového souboru /app/config_example.php
 ```
 
 ## Todos 
