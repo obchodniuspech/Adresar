@@ -21,7 +21,13 @@ if ($_POST) {
 	
 	$pageContent = "<table class='table table-striped'>$writableCheck</table>";
 	
-	
+	if(touch($_POST['BASE_FOLDER']."app/config.php")) {
+		echo "soubor byl vytvořen";
+	}
+	else {
+		echo "soubor bude nutné vytvořit manuálně";exit;
+	}
+
 	$file = fopen($_POST['BASE_FOLDER']."app/config.php","w+");
 	$configFile = <<<EOT
 	<?php
