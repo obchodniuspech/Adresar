@@ -47,11 +47,16 @@ if ($_POST) {
 	}
 	EOT;
 	
-	echo fwrite($file,$configFile);
+	if(fwrite($file,$configFile)) {
+		$pageContent = "Konfigurační soubor byl vytvořen, nyní prosím vytvořte databázi s příslušným názvem a importujte do ní soubor install.sql";
+	}
+	else {
+		$pageContent = "Konfigurační soubor se bohužel nepodařilo automaticky vytvořit. Zkopírujte prosím následující kód a vložte jej jako soubor \"config.php\" do složky /app/config.php";
+		$pageContent.= "<pre><code>$configFile</code></pre>";
+	}
 	fclose($file);
 	
 	
-	$pageContent = "Konfigurační soubor byl vytvořen, nyní prosím vytvořte databázi s příslušným názvem a importujte do ní soubor install.sql";
 	
 	
 }
