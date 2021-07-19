@@ -3,7 +3,7 @@
 class Contacts {
 	
 	private $mysqli;
-	public $errors;
+	global $errors;
 
 	function __construct($mysqli) {
 		$this->con = $mysqli;
