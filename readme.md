@@ -1,6 +1,6 @@
 # Adresář - Ukázkový projekt
 
-Aplikace adresář umožňuje základní správu kontaktů a je i základem pro kompletní administraci.
+Aplikace adresář umožňuje základní správu kontaktů a je i základem pro jednoduchou administraci (šablonovací systém a menu).
 
 ## Uživatelské funkce Adresáře
 - zobrazení seznamu kontaktů
@@ -36,10 +36,10 @@ Nastavte souboru /app/config.php oprávnění chmod 777
 Nastavte složce /assets/cache/ oprávnění chmod 777
 ```
 
-```
-Spusťte instalátor na webové adrese aplikace. Vyplňte údaje k databázi, mělo by dojít k automatickému vytvoření souboru config.php, pokud nastane chyba, postupujte prosím manuální instalací - viz níže.
-```
 
+Nyní spusťte instalátor na webové adrese aplikace. Vyplňte údaje k databázi, mělo by dojít k automatickému vytvoření souboru config.php, pokud nastane chyba, postupujte prosím manuální instalací - viz níže.
+
+## Instalace v případě selhání instalátoru (oprávnění)
 ```
 Vytvořte soubor /app/config.php pomocí vzorového souboru /app/config_example.php
 ```
