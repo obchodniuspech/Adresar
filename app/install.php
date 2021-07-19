@@ -2,24 +2,11 @@
 include "./app/forms.php";
 
 $_POST = array_map ( 'htmlspecialchars' , $_POST );
-$folders = array("assets/theme/cache/");
+$folders = array("assets/theme/cache/","app/config.php");
 
 
 if ($_POST) {
 	
-	
-	$writableCheck = "";
-	foreach ($folders AS $folder) {
-		$folder = $_POST['BASE_FOLDER'].$folder;		
-		if (is_writable($folder)) {
-			$result = 'OK';
-		} else {
-			$result = 'Soubor/složka nemá správná oprávnění!';
-		}
-		$writableCheck.= "<tr><td>$folder</td><td>$result</td></tr>";
-	}
-	
-	$pageContent = "<table class='table table-striped'>$writableCheck</table>";
 	
 	if(touch($_POST['BASE_FOLDER']."app/config.php")) {
 		echo "soubor byl vytvořen";
@@ -85,7 +72,22 @@ else {
 	
 	$baseUrl = str_replace("index.php", "", "http://".$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI']);
 	
-	$pageContent = $form->create(
+	$writableCheck = "";
+	foreach ($folders AS $folder) {
+		$folder = __DIR__."/../".$folder;		
+		if (is_writable($folder)) {
+			$result = 'OK';
+		} else {
+			$result = 'Soubor/složka nemá správná oprávnění!';
+		}
+		$writableCheck.= "<tr><td>$folder</td><td>$result</td></tr>";
+	}
+	
+	$pageContent = "<h2>Kontrola oprávnění pro soubory a složky</h2><table class='table table-striped'>$writableCheck</table>";
+	
+	
+	
+	$pageContent.= $form->create(
 		array(
 			"method"=>"post",
 			"action"=>htmlspecialchars($_SERVER['PHP_SELF']),
