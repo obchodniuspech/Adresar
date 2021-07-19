@@ -9,10 +9,10 @@ if ($_POST) {
 	
 	
 	if(touch($_POST['BASE_FOLDER']."app/config.php")) {
-		echo "soubor byl vytvořen";
+		//echo "soubor byl vytvořen";
 	}
 	else {
-		echo "soubor bude nutné vytvořit manuálně";exit;
+		echo "Soubor config.php se nepodařilo vytvořit automaticky a bude nutné jej vytvořit manuálně podle vzoru config_example.php";exit;
 	}
 
 	$file = fopen($_POST['BASE_FOLDER']."app/config.php","w+");
@@ -44,6 +44,7 @@ if ($_POST) {
 	
 	if(fwrite($file,$configFile)) {
 		$pageContent = "Konfigurační soubor byl vytvořen, nyní prosím vytvořte databázi s příslušným názvem a importujte do ní soubor install.sql";
+		$pageContent.= "<a href='./'><button class='btn btn-success'>Pokračovat do aplikace</button></a>;
 	}
 	else {
 		$pageContent = "Konfigurační soubor se bohužel nepodařilo automaticky vytvořit. Zkopírujte prosím následující kód a vložte jej jako soubor \"config.php\" do složky /app/config.php";

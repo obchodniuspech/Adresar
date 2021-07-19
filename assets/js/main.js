@@ -35,8 +35,8 @@ $( document ).ready(function() {
 				  }
 				})
 				  .done(function( msg ) {
-					alert( "Data Saved: " + msg );
-					console.log("data odeslana");
+					//alert( "Data Saved: " + msg );
+					console.log("data ulozena");
 					$( "#name").prop( "disabled", true );
 					$( "#surname").prop( "disabled", true );
 					$( "#phone").prop( "disabled", true );
