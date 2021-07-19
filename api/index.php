@@ -10,6 +10,7 @@ header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers
 
 include("../app/include.php");
 
+$errors = new Errors;
 $contacts = new Contacts($mysqli);
 
 
