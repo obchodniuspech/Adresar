@@ -1,7 +1,6 @@
 <?php
-
+include(__DIR__."/errors.php");
 include(__DIR__."/global.php");
-
 include(__DIR__."/config.php");
 if ($installed=="no") {
 	include __DIR__."/install.php";
