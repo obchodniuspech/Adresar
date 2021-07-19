@@ -14,17 +14,24 @@ Aplikace adresář umožňuje základní správu kontaktů a je i základem pro 
 ## Použité externí balíčky
 - Composer
 	- Twig
-	
-	```
-	git status
-	git add
-	git commit
-	```
-	
+
 - Bootstrap CSS & Bootstrap JS
 - jQuery
 
+## Instalace 
+	
+```
+git clone https://github.com/obchodniuspech/Adresar.git
+```
 
+
+```
+Vytvořte příslušnou databázi a importujte soubor /app/install.sql pro vytvoření databáze
+```
+
+```
+Vytvořte soubor config.php pomocí vzorového souboru config_example.php, případně spusťte instalaci načtením aplikace v prohlížeči (beta).
+```
 
 ## Todos 
 

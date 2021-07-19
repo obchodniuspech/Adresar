@@ -22,7 +22,7 @@ if ($_POST) {
 	$pageContent = "<table class='table table-striped'>$writableCheck</table>";
 	
 	
-	$file = fopen($_POST['BASE_FOLDER']."app/configNew.php","w+");
+	$file = fopen($_POST['BASE_FOLDER']."app/config.php","w+");
 	$configFile = <<<EOT
 	<?php
 	// Default configs
@@ -37,9 +37,10 @@ if ($_POST) {
 	define("DB_USER", "{$_POST['DB_USER']}");
 	define("DB_PASS", "{$_POST['DB_PASS']}");
 	define("DB_DATABASE", "{$_POST['DB_DATABASE']}");
+	define("DB_PORT", "{$_POST['DB_PORT']}");
 	
 	
-	\$mysqli = new mysqli(DB_SERVER, DB_USER, DB_PASS, DB_DATABASE);
+	\$mysqli = new mysqli(DB_SERVER, DB_USER, DB_PASS, DB_DATABASE, DB_PORT);
 	
 	if(\$mysqli->connect_error) {
 		  exit('Error connecting to database'); //Should be a message a typical user could understand in production
@@ -49,10 +50,10 @@ if ($_POST) {
 	echo fwrite($file,$configFile);
 	fclose($file);
 	
-	$mysqli = new mysqli(DB_SERVER, DB_USER, DB_PASS, DB_DATABASE);
-	$sql = file_get_contents('./app/install.sql');
-	$qr = $mysqli->exec($sql);
-	print_r($qr);exit;
+	
+	$pageContent = "Konfigurační soubor byl vytvořen, nyní prosím vytvořte databázi s příslušným názvem a importujte do ní soubor install.sql";
+	
+	
 }
 
 else {
@@ -121,6 +122,14 @@ else {
 				"value"=>"",
 			),
 			array(
+				"type"=>"text",
+				"name"=>"DB_PORT",
+				"id"=>"DB_PORT",
+				"placeholder"=>"DB_PORT",
+				"class"=>"form-control",
+				"value"=>"8889",
+			),
+			array(
 				"type"=>"button",
 				"name"=>"submit",
 				"id"=>"contactSave",
@@ -163,7 +172,7 @@ else {
 		</div>
 	</div>
 	<div class="row">
-		<div class="col-md-12">
+		<div class="col-md-12 text-center">
 			<?php
 				echo $pageContent;
 				
