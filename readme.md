@@ -36,11 +36,9 @@ Vytvořte soubor config.php pomocí vzorového souboru config_example.php, pří
 ## Todos 
 
 ###### HTML / CSS
-https://getbootstrap.com/docs/5.0/examples/sidebars/
-- stahnout na local vsechny vnorene soubory
+- menu - informace o uživateli vlevo dole 
 
 ###### PHP
-- API na spravu udaju
 - duplicitni kontakty - zabranit tomu
 - vyhledávání v kontaktech (Elastic Search)
 - vložení nového kontaktu (včetně napojení na registr firem Ares v případě firemních kontaktů)
