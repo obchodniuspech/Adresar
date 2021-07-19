@@ -32,8 +32,10 @@ if ($_POST) {
 	define("DB_DATABASE", "{$_POST['DB_DATABASE']}");
 	define("DB_PORT", "{$_POST['DB_PORT']}");
 	
+	\$installed = "yes";
 	
 	\$mysqli = new mysqli(DB_SERVER, DB_USER, DB_PASS, DB_DATABASE, DB_PORT);
+	\$mysqli->set_charset('utf8');
 	
 	if(\$mysqli->connect_error) {
 		  exit('Error connecting to database'); //Should be a message a typical user could understand in production
@@ -70,22 +72,39 @@ else {
 	
 	$form = new Form;
 	
-	$baseUrl = str_replace("index.php", "", "http://".$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI']);
+	if ($_SERVER['HTTPS']) {
+		$http = "https://";
+	}
+	else {
+		$http = "http://";
+	}
+	$baseUrl = str_replace("index.php", "", $http.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI']);
 	
 	$writableCheck = "";
+	$isError = false;
+	
 	foreach ($folders AS $folder) {
 		$folder = __DIR__."/../".$folder;		
 		if (is_writable($folder)) {
 			$result = 'OK';
 		} else {
-			$result = 'Soubor/složka nemá správná oprávnění!';
+			$isError = true;
+			$result = '
+			<svg style="color: red;" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-exclamation-circle" viewBox="0 0 16 16">
+			  <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+			  <path d="M7.002 11a1 1 0 1 1 2 0 1 1 0 0 1-2 0zM7.1 4.995a.905.905 0 1 1 1.8 0l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 4.995z"/>
+			</svg>&nbsp;
+			Soubor/složka nemá správná oprávnění!';
 		}
 		$writableCheck.= "<tr><td>$folder</td><td>$result</td></tr>";
 	}
 	
 	$pageContent = "<h2>Kontrola oprávnění pro soubory a složky</h2><table class='table table-striped'>$writableCheck</table>";
+	if ($isError) {
+		$pageContent.= "Upravte prosím oprávnění výše uvedených souborů a složek na Chmod 777 a obnovte stránku.";
+	}
 	
-	
+	else {
 	
 	$pageContent.= $form->create(
 		array(
@@ -161,7 +180,12 @@ else {
 				"class"=>"btn btn-primary	",
 				"value"=>"",
 			),
-		));	
+		));		
+		
+	}
+	
+	
+	
 	
 }
 
