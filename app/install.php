@@ -44,10 +44,10 @@ if ($_POST) {
 	
 	if(fwrite($file,$configFile)) {
 		$pageContent = "Konfigurační soubor byl vytvořen, nyní prosím vytvořte databázi s příslušným názvem a importujte do ní soubor install.sql";
-		$pageContent.= "<a href='./'><button class='btn btn-success'>Pokračovat do aplikace</button></a>;
+		$pageContent.= "<a href='./'><button class='btn btn-success'>Pokračovat do aplikace</button></a>";
 	}
 	else {
-		$pageContent = "Konfigurační soubor se bohužel nepodařilo automaticky vytvořit. Zkopírujte prosím kód ze souboru "app/config_example.php a vložte jej jako soubor \"/app/config.php\"";
+		$pageContent = "Konfigurační soubor se bohužel nepodařilo automaticky vytvořit. Zkopírujte prosím kód ze souboru \"app/config_example.php\" a vložte jej jako soubor \"/app/config.php\"";
 	}
 	fclose($file);
 	
