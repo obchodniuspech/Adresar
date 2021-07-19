@@ -47,19 +47,7 @@ if ($_POST) {
 		$pageContent.= "<a href='./'><button class='btn btn-success'>Pokračovat do aplikace</button></a>;
 	}
 	else {
-		$pageContent = "Konfigurační soubor se bohužel nepodařilo automaticky vytvořit. Zkopírujte prosím následující kód a vložte jej jako soubor \"config.php\" do složky /app/config.php";
-		$pageContent.= "<pre><code>
-		<p>&lt;p&gt;&lt;?php // Default configs define(&amp;quot;BASE_URL&amp;quot;, &amp;quot;http://localhost:8888/adresar_blueghost/Adresar_BlueGhost/&amp;quot;);&lt;/p&gt;</p>
-			
-			<p>&lt;p&gt; // Elastic Search define(&amp;quot;ELASTIC&amp;quot;, false);&lt;/p&gt;</p>
-			
-			<p>&lt;p&gt;// MySQL credentials define(&amp;quot;DB_SERVER&amp;quot;, &amp;quot;localhost&amp;quot;); define(&amp;quot;DB_USER&amp;quot;, &amp;quot;adresarDemo&amp;quot;); define(&amp;quot;DB_PASS&amp;quot;, &amp;quot;password&amp;quot;); define(&amp;quot;DB_DATABASE&amp;quot;, &amp;quot;adresarDemo&amp;quot;); define(&amp;quot;DB_PORT&amp;quot;, &amp;quot;8889&amp;quot;);&lt;/p&gt;</p>
-			
-			<p>&lt;p&gt; &amp;mysqli = new mysqli(DB_SERVER, DB_USER, DB_PASS, DB_DATABASE, DB_PORT);&lt;/p&gt;</p>
-			
-			<p>&lt;p&gt;if(&amp;-&gt;connect_error) { &nbsp;exit(&#39;Error connecting to database&#39;); //Should be a message a typical user could understand in production }&lt;/p&gt;</p>
-			
-		</code></pre>";
+		$pageContent = "Konfigurační soubor se bohužel nepodařilo automaticky vytvořit. Zkopírujte prosím kód ze souboru "app/config_example.php a vložte jej jako soubor \"/app/config.php\"";
 	}
 	fclose($file);
 	
@@ -136,7 +124,7 @@ else {
 				"id"=>"DB_SERVER",
 				"placeholder"=>"DB_SERVER",
 				"class"=>"form-control",
-				"value"=>"",
+				"value"=>"localhost",
 				"required"=>"required",
 			),
 			array(
@@ -171,7 +159,7 @@ else {
 				"id"=>"DB_PORT",
 				"placeholder"=>"DB_PORT",
 				"class"=>"form-control",
-				"value"=>"8889",
+				"value"=>"3306",
 			),
 			array(
 				"type"=>"button",
