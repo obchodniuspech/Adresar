@@ -3,11 +3,10 @@
 class Contacts {
 	
 	private $mysqli;
-	private $errors;
+	public $errors;
 
 	function __construct($mysqli) {
 		$this->con = $mysqli;
-		$this->errors = $errors;
 	}
 	
 	function overview() {
@@ -40,7 +39,7 @@ class Contacts {
 				$last_id = $stmt->insert_id;
 			}
 			else {
-				$lastId = $this->errors->error("already_exist");
+				$lastId = $errors->error("already_exist");
 			}
 			
 			$stmt->close();
