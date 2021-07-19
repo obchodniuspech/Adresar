@@ -52,7 +52,18 @@ if ($_POST) {
 	}
 	else {
 		$pageContent = "Konfigurační soubor se bohužel nepodařilo automaticky vytvořit. Zkopírujte prosím následující kód a vložte jej jako soubor \"config.php\" do složky /app/config.php";
-		$pageContent.= "<pre><code>$configFile</code></pre>";
+		$pageContent.= "<pre><code>
+		<p>&lt;p&gt;&lt;?php // Default configs define(&amp;quot;BASE_URL&amp;quot;, &amp;quot;http://localhost:8888/adresar_blueghost/Adresar_BlueGhost/&amp;quot;);&lt;/p&gt;</p>
+			
+			<p>&lt;p&gt; // Elastic Search define(&amp;quot;ELASTIC&amp;quot;, false);&lt;/p&gt;</p>
+			
+			<p>&lt;p&gt;// MySQL credentials define(&amp;quot;DB_SERVER&amp;quot;, &amp;quot;localhost&amp;quot;); define(&amp;quot;DB_USER&amp;quot;, &amp;quot;adresarDemo&amp;quot;); define(&amp;quot;DB_PASS&amp;quot;, &amp;quot;password&amp;quot;); define(&amp;quot;DB_DATABASE&amp;quot;, &amp;quot;adresarDemo&amp;quot;); define(&amp;quot;DB_PORT&amp;quot;, &amp;quot;8889&amp;quot;);&lt;/p&gt;</p>
+			
+			<p>&lt;p&gt; &amp;mysqli = new mysqli(DB_SERVER, DB_USER, DB_PASS, DB_DATABASE, DB_PORT);&lt;/p&gt;</p>
+			
+			<p>&lt;p&gt;if(&amp;-&gt;connect_error) { &nbsp;exit(&#39;Error connecting to database&#39;); //Should be a message a typical user could understand in production }&lt;/p&gt;</p>
+			
+		</code></pre>";
 	}
 	fclose($file);
 	
