@@ -1,4 +1,4 @@
 RewriteEngine On
 
-RewriteCond %{REQUEST_URI} !^(/assets(.*)|/api(.*)|install.php)$
+RewriteCond %{REQUEST_URI} !^(/assets(.*)|/api(.*))$
 RewriteRule ^(.*)?$ index.php?id=$1 [L,QSA]

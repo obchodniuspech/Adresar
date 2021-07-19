@@ -8,7 +8,6 @@ Aplikace adresář umožňuje základní správu kontaktů a je i základem pro 
 - úprava kontaktu
 
 ## Technické funkce Adresáře
-- možnost volitelného užívání Elastic Search
 - jednoduché API
 - šablonovací systém Twig - příprava menu + switcher na přidávání funkcí
 

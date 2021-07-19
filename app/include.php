@@ -1,4 +1,6 @@
 <?php
+
+include(__DIR__."/global.php");
 include(__DIR__."/config.php");
 include __DIR__.'/loginCheck.php';
 include __DIR__.'/autoload.php';
