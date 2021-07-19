@@ -3,9 +3,11 @@
 class Contacts {
 	
 	private $mysqli;
+	private $errors;
 
 	function __construct($mysqli) {
 		$this->con = $mysqli;
+		$this->errors = $errors;
 	}
 	
 	function overview() {
@@ -14,17 +16,33 @@ class Contacts {
 		return $vysledek;
 	}
 	
+	
+	function saveCheckDontExist($url) {
+		$check = $this->con->query("SELECT * FROM `adresar` WHERE url= '$url'");
+		$results = $check->num_rows;
+		if ($results>0) {
+			return false;
+		}
+		else {return true;}
+	}
+	
 	function saveNew($dPost) {
 		//print_r($dPost);
 		if($stmt = $this->con->prepare("INSERT INTO `adresar` (name,surname,email,phone,note,url) VALUES (?,?,?,?,?,?) ")) {
 			$url = $this->createUrl($dPost['name']." ".$dPost['surname']);
-			$stmt->bind_param('ssssss', $dPost['name'], $dPost['surname'], $dPost['email'], $dPost['phone'], $dPost['note'],$url);
-			$stmt->execute();
-			if($stmt->affected_rows === 0) exit('No rows updated'); 
-			else {
-				//echo $sql->affected_rows." rows updated";
+			if($this->saveCheckDontExist($url)) {
+				$stmt->bind_param('ssssss', $dPost['name'], $dPost['surname'], $dPost['email'], $dPost['phone'], $dPost['note'],$url);
+				$stmt->execute();
+				if($stmt->affected_rows === 0) exit('No rows updated'); 
+				else {
+					//echo $sql->affected_rows." rows updated";
+				}
+				$last_id = $stmt->insert_id;
 			}
-			$last_id = $stmt->insert_id;
+			else {
+				$lastId = $this->errors->error("already_exist");
+			}
+			
 			$stmt->close();
 		}
 		else {

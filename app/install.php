@@ -61,7 +61,7 @@ else {
 	
 	$form = new Form;
 	
-	if ($_SERVER['HTTPS']) {
+	if (isset($_SERVER['HTTPS'])) {
 		$http = "https://";
 	}
 	else {
