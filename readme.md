@@ -3,17 +3,17 @@
 Aplikace adresář umožňuje základní správu kontaktů a je i základem pro kompletní administraci.
 
 ## Struktura aplikace Adresář
-bootstrap/
-├── dist/
-│   ├── css/
-│   └── js/
-├── site/
-│   └──content/
-│      └── docs/
-│          └── 5.0/
-│              └── examples/
-├── js/
-└── scss/
+bootstrap/\
+├── dist/\
+│   ├── css/\
+│   └── js/\
+├── site/\
+│   └──content/\
+│      └── docs/\
+│          └── 5.0/\
+│              └── examples/\
+├── js/\
+└── scss/\
 
 The scss/ and js/ are the source code for our CSS and JavaScript. The dist/ folder includes everything listed in the precompiled download section above. The site/docs/ folder includes the source code for our documentation, and examples/ of Bootstrap usage. Beyond that, any other included file provides support for packages, license information, and development.
 
