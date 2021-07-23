@@ -22,12 +22,16 @@ switch ($action) {
 		exit;	
 	break;
 	case "saveNew":
-		$contacts->saveNew($_POST);
+		$result = $contacts->saveNew($_POST);
+		if(is_numeric($result)){echo "okey";} else {echo $result;}
 	break;
 	case "saveEdit":
 		$contacts->saveEdit($_POST);
 	break;
 	case "delete":
 		$contacts->delete($_POST['id']);
+	break;
+	case "saveCheckDontExistFromName":
+		$contacts->saveCheckDontExistFromName($_POST['name']);
 	break;
 }

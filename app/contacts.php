@@ -3,8 +3,7 @@
 class Contacts {
 	
 	private $mysqli;
-	global $errors;
-
+	
 	function __construct($mysqli) {
 		$this->con = $mysqli;
 	}
@@ -25,8 +24,22 @@ class Contacts {
 		else {return true;}
 	}
 	
+	function saveCheckDontExistFromName($name) {
+		$url = $this->createUrl($name);
+		$check = $this->con->query("SELECT * FROM `adresar` WHERE url= '$url'");
+		$results = $check->num_rows;
+		if ($results>0) {
+			echo "yes";
+		}
+		else {
+			echo "no";
+		}
+	}
+	
 	function saveNew($dPost) {
 		//print_r($dPost);
+		global $errors;
+
 		if($stmt = $this->con->prepare("INSERT INTO `adresar` (name,surname,email,phone,note,url) VALUES (?,?,?,?,?,?) ")) {
 			$url = $this->createUrl($dPost['name']." ".$dPost['surname']);
 			if($this->saveCheckDontExist($url)) {
@@ -54,6 +67,9 @@ class Contacts {
 	
 	function saveEdit($dPost) {
 		//print_r($dPost);
+		
+		global $errors;
+
 		if($stmt = $this->con->prepare("UPDATE `adresar` SET name=?, surname=?, email=?, phone=?, note=?, url=? WHERE id=?")) {
 			$url = $this->createUrl($dPost['name']." ".$dPost['surname']);
 			$stmt->bind_param('ssssssi', $dPost['name'], $dPost['surname'], $dPost['email'], $dPost['phone'], $dPost['note'],$url,$dPost['id']);
