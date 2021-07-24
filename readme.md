@@ -35,7 +35,9 @@ Nastavte souboru /app/config.php oprávnění chmod 777
 ```
 Nastavte složce /assets/cache/ oprávnění chmod 777
 ```
-
+```
+Instalace SQL - /app/install.sql
+```
 
 Nyní spusťte instalátor na webové adrese aplikace. Vyplňte údaje k databázi, mělo by dojít k automatickému vytvoření souboru config.php, pokud nastane chyba, postupujte prosím manuální instalací - viz níže.
 
