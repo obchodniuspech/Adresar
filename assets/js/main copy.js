@@ -1,3 +1,24 @@
+function checkExistence() {
+	var existenceInfo = null;
+	$.ajax({
+		  method: "POST",
+		  url: "./api/",
+		  data: { 
+			action: 'saveCheckDontExistFromName', 
+			name: $( "#name").val()+" "+$( "#surname").val(), 
+		  },
+		  success: function(data) {
+			  // Run the code here that needs
+			  //    to access the data returned
+			  //alert("data:"+data);
+			  var returnData = data;
+		  }
+		}).done(function( msg ) {
+			  //alert("existence: "+msg);
+		});
+		alert("existenceee: "+returnData);
+return existenceInfo;
+}
 
 $( document ).ready(function() {
 	
@@ -19,7 +40,8 @@ $( document ).ready(function() {
 			return $.trim(this.value).length === 0;
 		}).length > 0;
 		
-		var existence = "no";
+
+		alert("existencepod: "+checkExistence());
 		
 		if (!someEmpty && existence=="no") {			
 			//alert("vse OK, postuji");
@@ -37,7 +59,7 @@ $( document ).ready(function() {
 				  }
 				})
 				  .done(function( msg ) {
-					//alert( "Data Saved: " + msg );
+					alert( "Data Saved: " + msg );
 					console.log("data ulozena");
 					$( "#name").prop( "disabled", true );
 					$( "#surname").prop( "disabled", true );
